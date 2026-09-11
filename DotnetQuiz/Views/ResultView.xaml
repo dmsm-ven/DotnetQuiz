@@ -1,0 +1,21 @@
+<UserControl x:Class="DotnetQuiz.Views.ResultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Результат"
+                       FontSize="30" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,16"/>
+
+            <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,32">
+                <Run Text="Правильных ответов: "/><Run Text="{Binding CorrectCount, Mode=OneWay}"/><Run Text=" из "/><Run Text="{Binding TotalCount, Mode=OneWay}"/>
+            </TextBlock>
+
+            <Button Content="Начать заново" Command="{Binding RestartQuizCommand}"
+                    Width="170" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
