@@ -13,6 +13,7 @@ public partial class App : Application
 
         var connectionFactory = new SqliteConnectionFactory();
         DatabaseInitializer.Initialize(connectionFactory);
+        QuestionSeeder.SeedHardQuestions(connectionFactory);
 
         IQuestionRepository questionRepository = new QuestionRepository(connectionFactory);
         var mainViewModel = new MainViewModel(questionRepository);
