@@ -16,7 +16,7 @@ public partial class App : Application
         DatabaseInitializer.Initialize(connectionFactory);
 
         var dataDir = Path.Combine(AppContext.BaseDirectory, "Data");
-        foreach (var seedFile in new[] { "seed_hard_questions.sql" })
+        foreach (var seedFile in new[] { "seed_hard_questions.sql", "seed_hard_questions_2.sql" })
         {
             QuestionSeeder.SeedFromSqlFile(connectionFactory, Path.Combine(dataDir, seedFile));
         }
