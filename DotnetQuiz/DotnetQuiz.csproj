@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\seed_template.sql">
+    <!-- seed_template.sql — справочный шаблон для ручного заполнения, в рантайме не используется -->
+    <None Update="Data\seed_hard_questions.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

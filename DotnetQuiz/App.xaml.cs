@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using DotnetQuiz.Data;
 using DotnetQuiz.Services;
 using DotnetQuiz.ViewModels;
@@ -13,7 +14,12 @@ public partial class App : Application
 
         var connectionFactory = new SqliteConnectionFactory();
         DatabaseInitializer.Initialize(connectionFactory);
-        QuestionSeeder.SeedHardQuestions(connectionFactory);
+
+        var dataDir = Path.Combine(AppContext.BaseDirectory, "Data");
+        foreach (var seedFile in new[] { "seed_hard_questions.sql" })
+        {
+            QuestionSeeder.SeedFromSqlFile(connectionFactory, Path.Combine(dataDir, seedFile));
+        }
 
         IQuestionRepository questionRepository = new QuestionRepository(connectionFactory);
         var mainViewModel = new MainViewModel(questionRepository);
